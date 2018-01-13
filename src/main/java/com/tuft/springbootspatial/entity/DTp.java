@@ -16,14 +16,17 @@ public class DTp {
     private String rajon;
     @Column(name = "the_geom", columnDefinition = "geometry(LineString)")
     private LineString lineString;
+    @Column(name = "text")
+    private String text;
 
     public DTp() {
     }
 
-    public DTp(String silrada, String rajon, LineString lineString) {
+    public DTp(String silrada, String rajon, LineString lineString, String text) {
         this.silrada = silrada;
         this.rajon = rajon;
         this.lineString = lineString;
+        this.text = text;
     }
 
     public Long getGid() {
@@ -56,5 +59,13 @@ public class DTp {
 
     public void setLineString(LineString lineString) {
         this.lineString = lineString;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

@@ -1,6 +1,5 @@
 package com.tuft.springbootspatial.entity;
 
-
 import com.vividsolutions.jts.geom.LineString;
 
 import javax.persistence.*;
@@ -20,17 +19,21 @@ public class CLep10kv {
     private Double length;
     @Column(name = "geom", columnDefinition = "geometry(LineString,4326)")
     private LineString lineString;
+    @Column(name = "text")
+    private String text;
 
 
     public CLep10kv() {
     }
 
-    public CLep10kv(String silrada, String rajon, Double length, LineString lineString) {
+    public CLep10kv(String silrada, String rajon, Double length, LineString lineString, String text) {
         this.silrada = silrada;
         this.rajon = rajon;
         this.length = length;
         this.lineString = lineString;
+        this.text = text;
     }
+
 
     public Long getGid() {
         return gid;
@@ -70,5 +73,13 @@ public class CLep10kv {
 
     public void setLineString(LineString lineString) {
         this.lineString = lineString;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

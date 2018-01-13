@@ -1,12 +1,12 @@
 package com.tuft.springbootspatial.entity;
 
-import com.vividsolutions.jts.geom.LineString;
+import com.vividsolutions.jts.geom.Point;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "d_TP_name")
-public class DTpName {
+@Table(name = "abon_TP_name")
+public class AbonTpName {
     @Id
     @GeneratedValue
     private Long gid;
@@ -16,17 +16,17 @@ public class DTpName {
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
-    @Column(name = "the_geom", columnDefinition = "geometry(LineString)")
-    private LineString lineString;
+    @Column(name = "the_geom", columnDefinition = "geometry(Point)")
+    private Point point;
 
-    public DTpName() {
+    public AbonTpName() {
     }
 
-    public DTpName(String text, String silrada, String rajon, LineString lineString) {
+    public AbonTpName(String text, String silrada, String rajon, Point point) {
         this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
-        this.lineString = lineString;
+        this.point = point;
     }
 
     public Long getGid() {
@@ -61,11 +61,11 @@ public class DTpName {
         this.rajon = rajon;
     }
 
-    public LineString getLineString() {
-        return lineString;
+    public Point getPoint() {
+        return point;
     }
 
-    public void setLineString(LineString lineString) {
-        this.lineString = lineString;
+    public void setPoint(Point point) {
+        this.point = point;
     }
 }

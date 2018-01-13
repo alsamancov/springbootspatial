@@ -5,27 +5,27 @@ import com.vividsolutions.jts.geom.LineString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "d_TP_name")
-public class DTpName {
+@Table(name = "abon_TP")
+public class AbonTp {
     @Id
     @GeneratedValue
     private Long gid;
-    @Column(name = "TEXT")
-    private String text;
     @Column(name = "SILRADA")
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
+    @Column(name = "TEXT")
+    private String text;
     @Column(name = "the_geom", columnDefinition = "geometry(LineString)")
     private LineString lineString;
 
-    public DTpName() {
+    public AbonTp() {
     }
 
-    public DTpName(String text, String silrada, String rajon, LineString lineString) {
-        this.text = text;
+    public AbonTp(String silrada, String rajon, String text, LineString lineString) {
         this.silrada = silrada;
         this.rajon = rajon;
+        this.text = text;
         this.lineString = lineString;
     }
 
@@ -35,14 +35,6 @@ public class DTpName {
 
     public void setGid(Long gid) {
         this.gid = gid;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public String getSilrada() {
@@ -59,6 +51,14 @@ public class DTpName {
 
     public void setRajon(String rajon) {
         this.rajon = rajon;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public LineString getLineString() {

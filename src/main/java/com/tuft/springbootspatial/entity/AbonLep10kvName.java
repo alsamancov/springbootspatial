@@ -1,40 +1,40 @@
 package com.tuft.springbootspatial.entity;
 
-import com.vividsolutions.jts.geom.LineString;
+import com.vividsolutions.jts.geom.Point;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "d_TP_name")
-public class DTpName {
+@Table(name = "abon_LEP_10kV_name")
+public class AbonLep10kvName {
     @Id
     @GeneratedValue
-    private Long gid;
+    private Long id;
     @Column(name = "TEXT")
     private String text;
     @Column(name = "SILRADA")
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
-    @Column(name = "the_geom", columnDefinition = "geometry(LineString)")
-    private LineString lineString;
+    @Column(name = "the_geom", columnDefinition = "geometry(Point)")
+    private Point point;
 
-    public DTpName() {
+    public AbonLep10kvName() {
     }
 
-    public DTpName(String text, String silrada, String rajon, LineString lineString) {
+    public AbonLep10kvName(String text, String silrada, String rajon, Point point) {
         this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
-        this.lineString = lineString;
+        this.point = point;
     }
 
-    public Long getGid() {
-        return gid;
+    public Long getId() {
+        return id;
     }
 
-    public void setGid(Long gid) {
-        this.gid = gid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getText() {
@@ -61,11 +61,11 @@ public class DTpName {
         this.rajon = rajon;
     }
 
-    public LineString getLineString() {
-        return lineString;
+    public Point getPoint() {
+        return point;
     }
 
-    public void setLineString(LineString lineString) {
-        this.lineString = lineString;
+    public void setPoint(Point point) {
+        this.point = point;
     }
 }

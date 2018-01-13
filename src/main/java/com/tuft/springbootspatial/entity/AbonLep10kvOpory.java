@@ -5,28 +5,31 @@ import com.vividsolutions.jts.geom.LineString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "d_TP_name")
-public class DTpName {
+@Table(name = "abon_LEP_10kV_opory")
+public class AbonLep10kvOpory {
     @Id
     @GeneratedValue
     private Long gid;
-    @Column(name = "TEXT")
-    private String text;
     @Column(name = "SILRADA")
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
-    @Column(name = "the_geom", columnDefinition = "geometry(LineString)")
+    @Column(name = "LENGTH_")
+    private Double length;
+    @Column(name = "geom", columnDefinition = "geometry(LineString)")
     private LineString lineString;
+    @Column(name = "text")
+    private String text;
 
-    public DTpName() {
+    public AbonLep10kvOpory() {
     }
 
-    public DTpName(String text, String silrada, String rajon, LineString lineString) {
-        this.text = text;
+    public AbonLep10kvOpory(String silrada, String rajon, Double length, LineString lineString, String text) {
         this.silrada = silrada;
         this.rajon = rajon;
+        this.length = length;
         this.lineString = lineString;
+        this.text = text;
     }
 
     public Long getGid() {
@@ -35,14 +38,6 @@ public class DTpName {
 
     public void setGid(Long gid) {
         this.gid = gid;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public String getSilrada() {
@@ -61,11 +56,27 @@ public class DTpName {
         this.rajon = rajon;
     }
 
+    public Double getLength() {
+        return length;
+    }
+
+    public void setLength(Double length) {
+        this.length = length;
+    }
+
     public LineString getLineString() {
         return lineString;
     }
 
     public void setLineString(LineString lineString) {
         this.lineString = lineString;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
