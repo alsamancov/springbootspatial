@@ -1,35 +1,35 @@
 package com.tuft.springbootspatial.entity;
 
-import com.vividsolutions.jts.geom.LineString;
+import com.vividsolutions.jts.geom.Point;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "c_LEP_10kV_opory")
-public class CLep10kvOpory {
+@Table(name = "p_LEP_10kV_name")
+public class PLep10kvName {
     @Id
     @GeneratedValue
     private Long gid;
+    @Column(name = "TEXT")
+    private String text;
     @Column(name = "SILRADA")
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
-    @Column(name = "geom", columnDefinition = "geometry(LineString,4326)")
-    private LineString lineString;
-    @Column(name = "text")
-    private String text;
-    @Column(name = "flag")
+    @Column(name = "FLAG")
     private int flag;
+    @Column(name = "the_geom", columnDefinition = "geometry(Point, 4326)")
+    private Point point;
 
-    public CLep10kvOpory() {
+    public PLep10kvName() {
     }
 
-    public CLep10kvOpory(String silrada, String rajon, LineString lineString, String text, int flag) {
+    public PLep10kvName(String text, String silrada, String rajon, int flag, Point point) {
+        this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
-        this.lineString = lineString;
-        this.text = text;
         this.flag = flag;
+        this.point = point;
     }
 
     public Long getGid() {
@@ -38,6 +38,14 @@ public class CLep10kvOpory {
 
     public void setGid(Long gid) {
         this.gid = gid;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getSilrada() {
@@ -56,28 +64,19 @@ public class CLep10kvOpory {
         this.rajon = rajon;
     }
 
-
-    public LineString getLineString() {
-        return lineString;
-    }
-
-    public void setLineString(LineString lineString) {
-        this.lineString = lineString;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public int getFlag() {
         return flag;
     }
 
     public void setFlag(int flag) {
         this.flag = flag;
+    }
+
+    public Point getPoint() {
+        return point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
     }
 }

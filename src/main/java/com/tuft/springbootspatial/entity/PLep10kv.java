@@ -5,8 +5,8 @@ import com.vividsolutions.jts.geom.LineString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "c_LEP_10kV_opory")
-public class CLep10kvOpory {
+@Table(name = "p_LEP_10kV")
+public class PLep10kv {
     @Id
     @GeneratedValue
     private Long gid;
@@ -14,6 +14,8 @@ public class CLep10kvOpory {
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
+    @Column(name = "LENGTH_")
+    private Double length;
     @Column(name = "geom", columnDefinition = "geometry(LineString,4326)")
     private LineString lineString;
     @Column(name = "text")
@@ -21,12 +23,13 @@ public class CLep10kvOpory {
     @Column(name = "flag")
     private int flag;
 
-    public CLep10kvOpory() {
+    public PLep10kv() {
     }
 
-    public CLep10kvOpory(String silrada, String rajon, LineString lineString, String text, int flag) {
+    public PLep10kv(String silrada, String rajon, Double length, LineString lineString, String text, int flag) {
         this.silrada = silrada;
         this.rajon = rajon;
+        this.length = length;
         this.lineString = lineString;
         this.text = text;
         this.flag = flag;
@@ -56,6 +59,13 @@ public class CLep10kvOpory {
         this.rajon = rajon;
     }
 
+    public Double getLength() {
+        return length;
+    }
+
+    public void setLength(Double length) {
+        this.length = length;
+    }
 
     public LineString getLineString() {
         return lineString;

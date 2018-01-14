@@ -5,30 +5,30 @@ import com.vividsolutions.jts.geom.LineString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "c_LEP_10kV_opory")
-public class CLep10kvOpory {
+@Table(name = "p_LEP_10kV_opory")
+public class PLep10kvOpory {
     @Id
     @GeneratedValue
     private Long gid;
+    @Column(name = "TEXT")
+    private String text;
     @Column(name = "SILRADA")
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
     @Column(name = "geom", columnDefinition = "geometry(LineString,4326)")
     private LineString lineString;
-    @Column(name = "text")
-    private String text;
-    @Column(name = "flag")
+    @Column(name = "FLAG")
     private int flag;
 
-    public CLep10kvOpory() {
+    public PLep10kvOpory() {
     }
 
-    public CLep10kvOpory(String silrada, String rajon, LineString lineString, String text, int flag) {
+    public PLep10kvOpory(String text, String silrada, String rajon, LineString lineString, int flag) {
+        this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
         this.lineString = lineString;
-        this.text = text;
         this.flag = flag;
     }
 
@@ -38,6 +38,14 @@ public class CLep10kvOpory {
 
     public void setGid(Long gid) {
         this.gid = gid;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getSilrada() {
@@ -56,21 +64,12 @@ public class CLep10kvOpory {
         this.rajon = rajon;
     }
 
-
     public LineString getLineString() {
         return lineString;
     }
 
     public void setLineString(LineString lineString) {
         this.lineString = lineString;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public int getFlag() {

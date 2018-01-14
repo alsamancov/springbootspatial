@@ -20,16 +20,19 @@ public class CLep10kvNomeraOpor {
     private Double length;
     @Column(name = "geom", columnDefinition = "geometry(Point,4326)")
     private Point point;
+    @Column(name = "flag")
+    private int flag;
 
     public CLep10kvNomeraOpor() {
     }
 
-    public CLep10kvNomeraOpor(String text, String silrada, String rajon, Double length, Point point) {
+    public CLep10kvNomeraOpor(String text, String silrada, String rajon, Double length, Point point, int flag) {
         this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
         this.length = length;
         this.point = point;
+        this.flag = flag;
     }
 
     public Long getGid() {
@@ -78,5 +81,13 @@ public class CLep10kvNomeraOpor {
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }

@@ -2,10 +2,10 @@ package com.tuft.springbootspatial.entity;
 
 import com.vividsolutions.jts.geom.Point;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "c_LEP_10kV_name")
 public class CLep10kvName {
     @Id
     @GeneratedValue
@@ -18,15 +18,18 @@ public class CLep10kvName {
     private String rajon;
     @Column(name = "the_geom", columnDefinition = "geometry(Point)")
     private Point point;
+    @Column(name = "flag")
+    private int flag;
 
     public CLep10kvName() {
     }
 
-    public CLep10kvName(String text, String silrada, String rajon, Point point) {
+    public CLep10kvName(String text, String silrada, String rajon, Point point, int flag) {
         this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
         this.point = point;
+        this.flag = flag;
     }
 
     public Long getGid() {
@@ -67,5 +70,13 @@ public class CLep10kvName {
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }
