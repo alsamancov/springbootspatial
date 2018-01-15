@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CLep10kvNameRepository extends JpaRepository<CLep10kvName, Long> {
+    CLep10kvName findByFlag(int flag);
 }

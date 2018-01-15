@@ -18,15 +18,18 @@ public class DTp {
     private LineString lineString;
     @Column(name = "text")
     private String text;
+    @Column(name = "flag")
+    private int flag;
 
     public DTp() {
     }
 
-    public DTp(String silrada, String rajon, LineString lineString, String text) {
+    public DTp(String silrada, String rajon, LineString lineString, String text, int flag) {
         this.silrada = silrada;
         this.rajon = rajon;
         this.lineString = lineString;
         this.text = text;
+        this.flag = flag;
     }
 
     public Long getGid() {
@@ -67,5 +70,13 @@ public class DTp {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }

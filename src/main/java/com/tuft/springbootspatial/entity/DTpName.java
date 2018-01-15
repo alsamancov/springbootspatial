@@ -18,15 +18,18 @@ public class DTpName {
     private String rajon;
     @Column(name = "the_geom", columnDefinition = "geometry(LineString)")
     private LineString lineString;
+    @Column(name = "flag")
+    private int flag;
 
     public DTpName() {
     }
 
-    public DTpName(String text, String silrada, String rajon, LineString lineString) {
+    public DTpName(String text, String silrada, String rajon, LineString lineString, int flag) {
         this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
         this.lineString = lineString;
+        this.flag = flag;
     }
 
     public Long getGid() {
@@ -67,5 +70,13 @@ public class DTpName {
 
     public void setLineString(LineString lineString) {
         this.lineString = lineString;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }

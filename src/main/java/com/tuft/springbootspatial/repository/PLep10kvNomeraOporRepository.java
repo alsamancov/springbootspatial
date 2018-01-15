@@ -4,4 +4,5 @@ import com.tuft.springbootspatial.entity.PLep10kvNomeraOpor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PLep10kvNomeraOporRepository extends JpaRepository<PLep10kvNomeraOpor, Long> {
+    PLep10kvNomeraOpor findByFlag(int flag);
 }

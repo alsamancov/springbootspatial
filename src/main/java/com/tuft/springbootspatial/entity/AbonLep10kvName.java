@@ -18,15 +18,18 @@ public class AbonLep10kvName {
     private String rajon;
     @Column(name = "the_geom", columnDefinition = "geometry(Point)")
     private Point point;
+    @Column(name = "flag")
+    private int flag;
 
     public AbonLep10kvName() {
     }
 
-    public AbonLep10kvName(String text, String silrada, String rajon, Point point) {
+    public AbonLep10kvName(String text, String silrada, String rajon, Point point, int flag) {
         this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;
         this.point = point;
+        this.flag = flag;
     }
 
     public Long getId() {
@@ -67,5 +70,13 @@ public class AbonLep10kvName {
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }

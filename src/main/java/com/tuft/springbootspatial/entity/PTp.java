@@ -5,8 +5,8 @@ import com.vividsolutions.jts.geom.LineString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "abon_LEP_10kV_opory")
-public class AbonLep10kvOpory {
+@Table(name = "p_TP")
+public class PTp {
     @Id
     @GeneratedValue
     private Long gid;
@@ -14,24 +14,21 @@ public class AbonLep10kvOpory {
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
-    @Column(name = "LENGTH_")
-    private Double length;
-    @Column(name = "geom", columnDefinition = "geometry(LineString)")
-    private LineString lineString;
-    @Column(name = "text")
+    @Column(name = "TEXT")
     private String text;
+    @Column(name = "the_geom", columnDefinition = "geometry(LineString, 4326)")
+    private LineString lineString;
     @Column(name = "flag")
     private int flag;
 
-    public AbonLep10kvOpory() {
+    public PTp() {
     }
 
-    public AbonLep10kvOpory(String silrada, String rajon, Double length, LineString lineString, String text, int flag) {
+    public PTp(String silrada, String rajon, String text, LineString lineString, int flag) {
         this.silrada = silrada;
         this.rajon = rajon;
-        this.length = length;
-        this.lineString = lineString;
         this.text = text;
+        this.lineString = lineString;
         this.flag = flag;
     }
 
@@ -59,12 +56,12 @@ public class AbonLep10kvOpory {
         this.rajon = rajon;
     }
 
-    public Double getLength() {
-        return length;
+    public String getText() {
+        return text;
     }
 
-    public void setLength(Double length) {
-        this.length = length;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public LineString getLineString() {
@@ -73,14 +70,6 @@ public class AbonLep10kvOpory {
 
     public void setLineString(LineString lineString) {
         this.lineString = lineString;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public int getFlag() {

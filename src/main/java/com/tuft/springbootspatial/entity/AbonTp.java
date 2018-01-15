@@ -18,15 +18,18 @@ public class AbonTp {
     private String text;
     @Column(name = "the_geom", columnDefinition = "geometry(LineString)")
     private LineString lineString;
+    @Column(name = "flag")
+    private int flag;
 
     public AbonTp() {
     }
 
-    public AbonTp(String silrada, String rajon, String text, LineString lineString) {
+    public AbonTp(String silrada, String rajon, String text, LineString lineString, int flag) {
         this.silrada = silrada;
         this.rajon = rajon;
         this.text = text;
         this.lineString = lineString;
+        this.flag = flag;
     }
 
     public Long getGid() {
@@ -67,5 +70,13 @@ public class AbonTp {
 
     public void setLineString(LineString lineString) {
         this.lineString = lineString;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }

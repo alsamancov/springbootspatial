@@ -20,16 +20,19 @@ public class AbonLep10kv {
     private LineString lineString;
     @Column(name = "text")
     private String text;
+    @Column(name = "flag")
+    private int flag;
 
     public AbonLep10kv() {
     }
 
-    public AbonLep10kv(String silrada, String rajon, Double length, LineString lineString, String text) {
+    public AbonLep10kv(String silrada, String rajon, Double length, LineString lineString, String text, int flag) {
         this.silrada = silrada;
         this.rajon = rajon;
         this.length = length;
         this.lineString = lineString;
         this.text = text;
+        this.flag = flag;
     }
 
     public Long getGid() {
@@ -78,5 +81,13 @@ public class AbonLep10kv {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 }

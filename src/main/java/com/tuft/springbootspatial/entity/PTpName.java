@@ -5,8 +5,8 @@ import com.vividsolutions.jts.geom.Point;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "abon_LEP_10kV_nomera_opor")
-public class AbonLep10kvNomeraOpor {
+@Table(name = "p_TP_name")
+public class PTpName {
     @Id
     @GeneratedValue
     private Long gid;
@@ -16,15 +16,15 @@ public class AbonLep10kvNomeraOpor {
     private String silrada;
     @Column(name = "RAJON")
     private String rajon;
-    @Column(name = "the_geom", columnDefinition = "geometry(Point)")
+    @Column(name = "the_geom", columnDefinition = "geometry(Point, 4326)")
     private Point point;
     @Column(name = "flag")
     private int flag;
 
-    public AbonLep10kvNomeraOpor() {
+    public PTpName() {
     }
 
-    public AbonLep10kvNomeraOpor(String text, String silrada, String rajon, Point point, int flag) {
+    public PTpName(String text, String silrada, String rajon, Point point, int flag) {
         this.text = text;
         this.silrada = silrada;
         this.rajon = rajon;

@@ -4,4 +4,5 @@ import com.tuft.springbootspatial.entity.AbonTpName;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AbonTpNameRepository extends JpaRepository<AbonTpName, Long> {
+    AbonTpName findByFlag(int flag);
 }

@@ -4,4 +4,5 @@ import com.tuft.springbootspatial.entity.PLep10kvOpory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PLep10kvOporyRepository extends JpaRepository<PLep10kvOpory, Long> {
+    PLep10kvOpory findByFlag(int flag);
 }
