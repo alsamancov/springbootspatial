@@ -6,21 +6,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "c_LEP_10kV")
-public class CLep10kv {
+public class CLep10kv extends GISLine {
 
-    @Id
-    @GeneratedValue
-    private Long gid;
-    @Column(name = "SILRADA")
-    private String silrada;
-    @Column(name = "RAJON")
-    private String rajon;
     @Column(name = "LENGTH_")
     private Double length;
-    @Column(name = "geom", columnDefinition = "geometry(LineString,4326)")
-    private LineString lineString;
-    @Column(name = "text")
-    private String text;
     @Column(name = "flag")
     private int flag;
 
@@ -28,68 +17,20 @@ public class CLep10kv {
     public CLep10kv() {
     }
 
-    public CLep10kv(String silrada, String rajon, Double length, LineString lineString, String text, int flag) {
-        this.silrada = silrada;
-        this.rajon = rajon;
+    public CLep10kv(Double length, int flag) {
         this.length = length;
-        this.lineString = lineString;
-        this.text = text;
         this.flag = flag;
     }
 
-    public Long getGid() {
-        return gid;
-    }
-
-    public void setGid(Long gid) {
-        this.gid = gid;
-    }
-
-    public String getSilrada() {
-        return silrada;
-    }
-
-    public void setSilrada(String silrada) {
-        this.silrada = silrada;
-    }
-
-    public String getRajon() {
-        return rajon;
-    }
-
-    public void setRajon(String rajon) {
-        this.rajon = rajon;
-    }
-
-    public Double getLength() {
-        return length;
-    }
-
-    public void setLength(Double length) {
+    public CLep10kv(LineString lineString, Double length, int flag) {
+        super(lineString);
         this.length = length;
+        this.flag = flag;
     }
 
-    public LineString getLineString() {
-        return lineString;
-    }
-
-    public void setLineString(LineString lineString) {
-        this.lineString = lineString;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public int getFlag() {
-        return flag;
-    }
-
-    public void setFlag(int flag) {
+    public CLep10kv(String text, String silrada, String rajon, LineString lineString, Double length, int flag) {
+        super(text, silrada, rajon, lineString);
+        this.length = length;
         this.flag = flag;
     }
 }

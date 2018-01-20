@@ -3,6 +3,8 @@ package com.tuft.springbootspatial.controller;
 
 import com.tuft.springbootspatial.entity.UserUuid;
 import com.tuft.springbootspatial.service.DatafileService;
+import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.operation.TransformException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +31,12 @@ public class ImportController {
     }
 
     @PostMapping("/upload")
-    public String singleFileUpload(@RequestParam("upfile") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException {
+    public String singleFileUpload(@RequestParam("upfile") MultipartFile file, RedirectAttributes redirectAttributes) throws FactoryException, TransformException {
         UUID uuid = UUID.randomUUID();
 
         if(file.isEmpty()){
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:upladStatus";
+            return "redirect:uploadStatus";
         }
 
         try {

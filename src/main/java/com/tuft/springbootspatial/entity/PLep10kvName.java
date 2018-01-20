@@ -6,62 +6,28 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "p_LEP_10kV_name")
-public class PLep10kvName {
-    @Id
-    @GeneratedValue
-    private Long gid;
-    @Column(name = "TEXT")
-    private String text;
-    @Column(name = "SILRADA")
-    private String silrada;
-    @Column(name = "RAJON")
-    private String rajon;
+public class PLep10kvName extends GISPoint {
+
     @Column(name = "FLAG")
     private int flag;
-    @Column(name = "the_geom", columnDefinition = "geometry(Point, 4326)")
-    private Point point;
+
 
     public PLep10kvName() {
     }
 
-    public PLep10kvName(String text, String silrada, String rajon, int flag, Point point) {
-        this.text = text;
-        this.silrada = silrada;
-        this.rajon = rajon;
+
+    public PLep10kvName(int flag) {
         this.flag = flag;
-        this.point = point;
     }
 
-    public Long getGid() {
-        return gid;
+    public PLep10kvName(Point point, int flag) {
+        super(point);
+        this.flag = flag;
     }
 
-    public void setGid(Long gid) {
-        this.gid = gid;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getSilrada() {
-        return silrada;
-    }
-
-    public void setSilrada(String silrada) {
-        this.silrada = silrada;
-    }
-
-    public String getRajon() {
-        return rajon;
-    }
-
-    public void setRajon(String rajon) {
-        this.rajon = rajon;
+    public PLep10kvName(String text, String silrada, String rajon, Point point, int flag) {
+        super(text, silrada, rajon, point);
+        this.flag = flag;
     }
 
     public int getFlag() {
@@ -70,13 +36,5 @@ public class PLep10kvName {
 
     public void setFlag(int flag) {
         this.flag = flag;
-    }
-
-    public Point getPoint() {
-        return point;
-    }
-
-    public void setPoint(Point point) {
-        this.point = point;
     }
 }

@@ -2,10 +2,8 @@ package com.tuft.springbootspatial.entity;
 
 import com.vividsolutions.jts.geom.Point;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -14,19 +12,24 @@ public class RoughData {
     @Id
     @GeneratedValue
     private Long gid;
+    private int counter;
     private UUID uuid;
     private String task;
     private String description;
+    @Column(columnDefinition = "geometry(Point,4326)")
     private Point point;
+    private Date date;
 
     public RoughData() {
     }
 
-    public RoughData(UUID uuid, String task, String description, Point point) {
+    public RoughData(int counter, UUID uuid, String task, String description, Point point, Date date) {
+        this.counter = counter;
         this.uuid = uuid;
         this.task = task;
         this.description = description;
         this.point = point;
+        this.date = date;
     }
 
     public Long getGid() {
@@ -35,6 +38,14 @@ public class RoughData {
 
     public void setGid(Long gid) {
         this.gid = gid;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
     public UUID getUuid() {
@@ -67,5 +78,13 @@ public class RoughData {
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

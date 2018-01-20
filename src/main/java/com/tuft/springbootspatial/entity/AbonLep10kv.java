@@ -6,57 +6,31 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "abon_LEP_10kV")
-public class AbonLep10kv {
-    @Id
-    @GeneratedValue
-    private Long gid;
-    @Column(name = "SILRADA")
-    private String silrada;
-    @Column(name = "RAJON")
-    private String rajon;
+public class AbonLep10kv extends GISLine {
+
     @Column(name = "LENGTH_")
     private Double length;
-    @Column(name = "geom", columnDefinition = "geometry(LineString,4326)")
-    private LineString lineString;
-    @Column(name = "text")
-    private String text;
     @Column(name = "flag")
     private int flag;
 
     public AbonLep10kv() {
     }
 
-    public AbonLep10kv(String silrada, String rajon, Double length, LineString lineString, String text, int flag) {
-        this.silrada = silrada;
-        this.rajon = rajon;
+    public AbonLep10kv(Double length, int flag) {
         this.length = length;
-        this.lineString = lineString;
-        this.text = text;
         this.flag = flag;
     }
 
-    public Long getGid() {
-        return gid;
+    public AbonLep10kv(LineString lineString, Double length, int flag) {
+        super(lineString);
+        this.length = length;
+        this.flag = flag;
     }
 
-    public void setGid(Long gid) {
-        this.gid = gid;
-    }
-
-    public String getSilrada() {
-        return silrada;
-    }
-
-    public void setSilrada(String silrada) {
-        this.silrada = silrada;
-    }
-
-    public String getRajon() {
-        return rajon;
-    }
-
-    public void setRajon(String rajon) {
-        this.rajon = rajon;
+    public AbonLep10kv(String text, String silrada, String rajon, LineString lineString, Double length, int flag) {
+        super(text, silrada, rajon, lineString);
+        this.length = length;
+        this.flag = flag;
     }
 
     public Double getLength() {
@@ -65,22 +39,6 @@ public class AbonLep10kv {
 
     public void setLength(Double length) {
         this.length = length;
-    }
-
-    public LineString getLineString() {
-        return lineString;
-    }
-
-    public void setLineString(LineString lineString) {
-        this.lineString = lineString;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public int getFlag() {
