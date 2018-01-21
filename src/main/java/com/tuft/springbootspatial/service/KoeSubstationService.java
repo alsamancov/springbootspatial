@@ -6,7 +6,14 @@ import org.opengis.referencing.operation.TransformException;
 import org.springframework.stereotype.Component;
 
 @Component
-public abstract class EntityService {
-    public abstract void save(TextDataKeeper keeper) throws FactoryException, TransformException;
-    public abstract void move();
+public class KoeSubstationService extends EntityService {
+    @Override
+    public void save(TextDataKeeper keeper) throws FactoryException, TransformException {
+
+    }
+
+    @Override
+    public void move() {
+
+    }
 }

@@ -12,7 +12,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 @Component
-public class DatafileService {
+public class DatafileService extends DataLoadService {
 
     @Autowired
     CoordinateTransformService coordinateTransformService;
@@ -29,6 +29,7 @@ public class DatafileService {
     @Autowired
     RoughDataService roughDataService;
 
+    @Override
     public UserUuid loadData(Path path, UUID uuid) throws IOException, FactoryException, TransformException {
         UserUuid userUuid = new UserUuid();
         File file = new File(path.toString());
@@ -126,4 +127,5 @@ public class DatafileService {
 
         return userUuid;
     }
+
 }
