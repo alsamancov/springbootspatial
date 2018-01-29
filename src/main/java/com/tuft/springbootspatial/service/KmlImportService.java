@@ -18,6 +18,7 @@ public class KmlImportService {
         String newPath = fileStr.substring(0, fileStr.length() - 4);
 
         Document document = kml.createAndSetDocument().withName(newPath);
+
         for(SurveyPoint surveyPoint : list) {
             document.createAndAddPlacemark()
                     .withName(newPath)

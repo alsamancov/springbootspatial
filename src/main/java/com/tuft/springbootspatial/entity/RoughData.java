@@ -10,25 +10,25 @@ import java.util.UUID;
 @Table(name = "rough_data")
 public class RoughData {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long gid;
     private int counter;
     private UUID uuid;
     private String task;
     private String description;
     @Column(columnDefinition = "geometry(Point,4326)")
-    private Point point;
+    private Point geom;
     private Date date;
 
     public RoughData() {
     }
 
-    public RoughData(int counter, UUID uuid, String task, String description, Point point, Date date) {
+    public RoughData(int counter, UUID uuid, String task, String description, Point geom, Date date) {
         this.counter = counter;
         this.uuid = uuid;
         this.task = task;
         this.description = description;
-        this.point = point;
+        this.geom = geom;
         this.date = date;
     }
 
@@ -72,12 +72,12 @@ public class RoughData {
         this.description = description;
     }
 
-    public Point getPoint() {
-        return point;
+    public Point getGeom() {
+        return geom;
     }
 
-    public void setPoint(Point point) {
-        this.point = point;
+    public void setGeom(Point geom) {
+        this.geom = geom;
     }
 
     public Date getDate() {

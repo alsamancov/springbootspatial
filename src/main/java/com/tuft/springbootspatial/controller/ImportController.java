@@ -1,46 +1,56 @@
 package com.tuft.springbootspatial.controller;
 
 
-import com.tuft.springbootspatial.entity.UserUuid;
-import com.tuft.springbootspatial.service.DatafileService;
+import com.tuft.springbootspatial.entity.RoughData;
+import com.tuft.springbootspatial.service.RoughDataService;
 import com.tuft.springbootspatial.service.StorageService;
 import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.operation.TransformException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
-@Controller
+
+@RestController
 public class ImportController {
 
+
+    private final StorageService storageService;
+
+
+
+
     @Autowired
-    StorageService storageService;
-
-    @GetMapping("/")
-    public String index(){
-        return "upload";
+    public ImportController(StorageService storageService) {
+        this.storageService = storageService;
     }
 
-    @PostMapping("/upload")
-    public String singleFileUpload(@RequestParam("upfile") MultipartFile file, RedirectAttributes redirectAttributes) throws FactoryException, TransformException {
+    @PostMapping("/api/upload")
+    public ResponseEntity<?> singleFileUpload(@RequestParam("file") MultipartFile file) throws FactoryException, TransformException {
+        if(file.isEmpty()){
+            return new ResponseEntity("please select a file!", HttpStatus.OK);
+        }
 
-
-        return storageService.store(file, redirectAttributes);
+        try{
+            storageService.store(file);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity("Successfully uploaded - " + file.getOriginalFilename(), new HttpHeaders(), HttpStatus.OK);
     }
 
-    @GetMapping("/uploadStatus")
+    @GetMapping("/api/uploadStatus")
     public String uploadStatus(){
         return "uploadStatus";
     }
+
+
 
 }

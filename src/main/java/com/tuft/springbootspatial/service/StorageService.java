@@ -29,13 +29,13 @@ public class StorageService {
 
 
 
-    public String store(MultipartFile file, RedirectAttributes redirectAttributes) throws FactoryException, TransformException {
+    public void store(MultipartFile file) throws FactoryException, TransformException {
         UUID uuid = UUID.randomUUID();
 
-        if(file.isEmpty()){
-            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:uploadStatus";
-        }
+//        if(file.isEmpty()){
+//            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+//            return "redirect:uploadStatus";
+//        }
 
 
 
@@ -48,17 +48,20 @@ public class StorageService {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(file.getOriginalFilename());
             Files.write(path, bytes);
+
+            String fileStr = String.valueOf(path);
+            String keyWord = fileStr.substring(fileStr.length() - 4, fileStr.length());
             for(Map.Entry<String, DataLoadService> entry : serviceMap.entrySet()) {
-                if(path.endsWith(entry.getKey())) {
+                if(keyWord.equals(entry.getKey())) {
                     entry.getValue().loadData(path, uuid);
                 }
             }
-            redirectAttributes.addFlashAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
+            //redirectAttributes.addFlashAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
         } catch (IOException e){
             e.printStackTrace();
         }
 
-        return "redirect:/uploadStatus";
+       // return "redirect:/uploadStatus";
 
     }
 }

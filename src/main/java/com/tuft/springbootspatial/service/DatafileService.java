@@ -90,23 +90,28 @@ public class DatafileService extends DataLoadService {
                         }
                     }
 
-                    Point point = coordinateTransformService.getPoint(latitude, longitude);
+                    Point point = coordinateTransformService.getPoint(longitude, latitude);
+                    point.setSRID(4326);
+
 
                     String silrada;
                     String rajon;
 
                     try {
-                        silrada = httpURLService.getSilrada();
-                        rajon = httpURLService.getRajon();
+                        //silrada = httpURLService.getSilrada();
+
+                        //rajon = httpURLService.getRajon();
+                        silrada = "";
+                        rajon = "";
                         if(justRajon == null){
                             justRajon = rajon;
                         }
-                    }catch (IOException e){
+                    }catch (Exception e){
                         silrada = "";
                         rajon = "";
                     }
 
-                    surveyPoints.add(counter, new SurveyPoint(longitude, latitude, name, silrada, rajon, code, tokens[4]));
+                    surveyPoints.add(counter, new SurveyPoint(point.getX(), point.getY(), name, silrada, rajon, code, tokens[4]));
 
                     Calendar calendar = Calendar.getInstance();
                     Date currentDate = calendar.getTime();
@@ -120,6 +125,7 @@ public class DatafileService extends DataLoadService {
         } finally {
             reader.close();
         }
+
         kmlImportService.writeKmlFile(file, surveyPoints);
 
         txtImportService.writeTxtFile(file, surveyPoints);

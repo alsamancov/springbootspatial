@@ -29,7 +29,9 @@ public class CRSConverterService {
         Point centroid = geometry.getCentroid();
         String projection = null;
         for(Zone zone: zones){
-            projection = zone.projection;
+            if(centroid.getX() > zone.min & centroid.getX() < zone.max) {
+                projection = zone.projection;
+            }
         }
         return projection;
     }

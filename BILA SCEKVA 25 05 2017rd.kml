@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+    <Document>
+        <name>E:\JavaProjects\springbootspatial\BILA SCEKVA 25 05 2017rd</name>
+        <Placemark>
+            <name>E:\JavaProjects\springbootspatial\BILA SCEKVA 25 05 2017rd</name>
+            <open>1</open>
+            <description>111W463</description>
+            <Point>
+                <coordinates>30.124367620365287,49.772081730339046</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>E:\JavaProjects\springbootspatial\BILA SCEKVA 25 05 2017rd</name>
+            <open>1</open>
+            <description>111W463</description>
+            <Point>
+                <coordinates>30.12433716493848,49.77207274443523</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>E:\JavaProjects\springbootspatial\BILA SCEKVA 25 05 2017rd</name>
+            <open>1</open>
+            <description>111W463</description>
+            <Point>
+                <coordinates>30.124354144333726,49.77204560750236</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>E:\JavaProjects\springbootspatial\BILA SCEKVA 25 05 2017rd</name>
+            <open>1</open>
+            <description>111W463</description>
+            <Point>
+                <coordinates>30.124392028734245,49.772054417606874</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

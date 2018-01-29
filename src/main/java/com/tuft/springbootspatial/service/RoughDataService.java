@@ -5,6 +5,8 @@ import com.tuft.springbootspatial.repository.RoughDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class RoughDataService {
 
@@ -13,5 +15,9 @@ public class RoughDataService {
 
     public void save(RoughData roughData){
         roughDataRepository.save(roughData);
+    }
+
+    public List<RoughData> getAll(){
+        return roughDataRepository.findAll();
     }
 }

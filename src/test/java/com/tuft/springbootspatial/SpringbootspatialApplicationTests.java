@@ -11,6 +11,7 @@ public class SpringbootspatialApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }
